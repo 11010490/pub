@@ -1,12 +1,13 @@
-# Define the remote server's hostname or IP address
-$remoteServer = "REMOTE_SERVER_NAME_OR_IP"
+param (
+    [Parameter(Mandatory=$true)]
+    [string]$remoteServer,
 
-# Define the name of the certificate template
-$certificateTemplateName = "RDPCert"
+    [string]$certificateTemplateName = "RDPCert"
+)
 
 # Function to extract the thumbprint of the certificate generated from the specified template
 function Get-CertificateThumbprintFromTemplate {
-    param(
+    param (
         [string]$templateName
     )
     # Get the certificates from the machine certificate store with the specified template name
